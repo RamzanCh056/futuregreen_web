@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "888537238854",
+    "project_id": "future-green-world",
+    "storage_bucket": "future-green-world.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:888537238854:android:f16497a45b8969ee422947",
+        "android_client_info": {
+          "package_name": "com.admin.fgw"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "888537238854-elfph5fg2e5tivaf88vhot1oko97phk7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHcRT3KzGnnI1lHD2eerc_joHI3U14dkQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "888537238854-elfph5fg2e5tivaf88vhot1oko97phk7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "888537238854-a6lvme2oar51qldjmnlnrdbdhd69lea1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.futuregreenworld.learning"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:888537238854:android:a1bdef19b07cbfa8422947",
+        "android_client_info": {
+          "package_name": "com.futuregreenworld.learning"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "888537238854-elfph5fg2e5tivaf88vhot1oko97phk7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHcRT3KzGnnI1lHD2eerc_joHI3U14dkQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "888537238854-elfph5fg2e5tivaf88vhot1oko97phk7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "888537238854-a6lvme2oar51qldjmnlnrdbdhd69lea1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.futuregreenworld.learning"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
