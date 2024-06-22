@@ -19,3 +19,4 @@ MaterialColor buildMaterialColor(Color color) {
   }
   return MaterialColor(color.value, swatch);
 }
+///
