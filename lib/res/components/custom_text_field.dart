@@ -1,26 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:future_green_world/res/colors/app_colors.dart';
-import 'package:future_green_world/res/controller/controller_instances.dart';
+import 'package:future_green_world/res/controllers/theme_controller.dart';
 import 'package:future_green_world/res/fonts/app_fonts.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomTextField extends StatelessWidget {
-  const CustomTextField({
-    Key? key,
-    required this.controller,
-    required this.hintText,
-    this.labelText,
-    required this.keyboardType,
-    required this.textInputAction,
-    required this.validator,
-    this.title,
-    this.savedValue,
-    this.readOnly,
-    this.isPrefixIconEnabled = false,
-    this.obscure=false,
-    this.icon = Icons.abc,
-    this.floatingLabelBehaviour=true
-  }) : super(key: key);
+  const CustomTextField(
+      {Key? key,
+      required this.controller,
+      required this.hintText,
+      this.labelText,
+      required this.keyboardType,
+      required this.textInputAction,
+      required this.validator,
+      this.title,
+      this.savedValue,
+      this.readOnly,
+      this.isPrefixIconEnabled = false,
+      this.obscure = false,
+      this.icon = Icons.abc,
+      this.floatingLabelBehaviour = true})
+      : super(key: key);
   final TextEditingController? controller;
   final bool? readOnly;
   final String? hintText;
@@ -37,45 +39,51 @@ class CustomTextField extends StatelessWidget {
   final IconData? icon;
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController =
+        Get.find<ThemeController>(); // Reference to ThemeController
+
     return SizedBox(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if(title!=null)Column(
-            children: [
-              Text(title!,style: TextStyle(
-                fontFamily: AppFonts.inter,
-                fontSize: 16,
-                fontWeight: FontWeight.w500
-              ),),
-              SizedBox(height: 10,)
-            ],
-          ),
-
-
+          if (title != null)
+            Column(
+              children: [
+                Text(
+                  title!,
+                  style: TextStyle(
+                      fontFamily: AppFonts.inter,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500),
+                ),
+                SizedBox(
+                  height: 10,
+                )
+              ],
+            ),
           TextFormField(
             maxLines: null,
             textCapitalization: TextCapitalization.sentences,
             readOnly: readOnly ?? false,
             controller: controller,
-
-
             style: TextStyle(
                 color: themeController.isDarkMode
                     ? DarkModeColors.kWhite
                     : AppColors.kPrimary),
             decoration: InputDecoration(
-              contentPadding: EdgeInsets.only(left: 10),
+                contentPadding: EdgeInsets.only(left: 10),
                 hintText: hintText,
                 hintStyle: GoogleFonts.playfairDisplay(
-                    color: themeController.isDarkMode
-                        ? AppColors.kLightGrey
-                        : AppColors.kBlack.withOpacity(0.5),
-                    fontSize: 14,
-                    // fontFamily: AppFonts.poppinsRegular
+                  color: themeController.isDarkMode
+                      ? AppColors.kLightGrey
+                      : AppColors.kBlack.withOpacity(0.5),
+                  fontSize: 14,
+                  // fontFamily: AppFonts.poppinsRegular
                 ),
                 //Just for this app
-                floatingLabelBehavior: floatingLabelBehaviour?FloatingLabelBehavior.always:FloatingLabelBehavior.never,
+                floatingLabelBehavior: floatingLabelBehaviour
+                    ? FloatingLabelBehavior.always
+                    : FloatingLabelBehavior.never,
                 labelText: labelText,
                 labelStyle: const TextStyle(
                     fontSize: 16,

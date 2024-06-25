@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:future_green_world/res/colors/app_colors.dart';
+import 'package:future_green_world/res/controllers/theme_controller.dart';
 import 'package:future_green_world/res/fonts/app_fonts.dart';
-
-import '../controller/controller_instances.dart';
+import 'package:get/get.dart';
 
 class CustomPasswordTextField extends StatefulWidget {
   const CustomPasswordTextField({
@@ -18,6 +18,7 @@ class CustomPasswordTextField extends StatefulWidget {
     this.isPrefixIconEnabled = false,
     this.icon = Icons.abc,
   }) : super(key: key);
+
   final TextEditingController? controller;
   final bool? readOnly;
   final String? hintText;
@@ -35,8 +36,11 @@ class CustomPasswordTextField extends StatefulWidget {
 }
 
 class _CustomPasswordTextFieldState extends State<CustomPasswordTextField> {
+  final ThemeController themeController = Get.find<ThemeController>();
+
   // Initially password is obscure
   bool _obscureText = false;
+
   // Toggles the password show status
   void _toggle() {
     setState(() {
@@ -51,52 +55,53 @@ class _CustomPasswordTextFieldState extends State<CustomPasswordTextField> {
         readOnly: widget.readOnly ?? false,
         controller: widget.controller,
         style: TextStyle(
-            color: themeController.isDarkMode
-                ? DarkModeColors.kWhite
-                : AppColors.kPrimary),
+          color: themeController.isDarkMode
+              ? DarkModeColors.kWhite
+              : AppColors.kPrimary,
+        ),
         decoration: InputDecoration(
           hintText: widget.hintText,
           hintStyle: TextStyle(
-              color: themeController.isDarkMode
-                  ? AppColors.kGrey
-                  : AppColors.kBlack.withOpacity(0.5),
-              fontSize: 16,
-              fontFamily: AppFonts.poppinsRegular),
-          //Just for this app
+            color: themeController.isDarkMode
+                ? AppColors.kGrey
+                : AppColors.kBlack.withOpacity(0.5),
+            fontSize: 16,
+            fontFamily: AppFonts.poppinsRegular,
+          ),
           floatingLabelBehavior: FloatingLabelBehavior.always,
           labelText: widget.labelText,
           labelStyle: const TextStyle(
-              fontSize: 16,
-              color: AppColors.kPrimary,
-              fontFamily: AppFonts.poppinsRegular),
+            fontSize: 16,
+            color: AppColors.kPrimary,
+            fontFamily: AppFonts.poppinsRegular,
+          ),
           border: InputBorder.none,
           enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: const BorderSide(
-                  //Just for tis app
-                  color: AppColors.kPrimary,
-                  width: 1.5)),
+            borderRadius: BorderRadius.circular(10),
+            borderSide: const BorderSide(
+              color: AppColors.kPrimary,
+              width: 1.5,
+            ),
+          ),
           focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(
-                10,
-              ),
-              borderSide:
-                  const BorderSide(color: AppColors.kPrimary, width: 1.5)),
+            borderRadius: BorderRadius.circular(10),
+            borderSide: const BorderSide(color: AppColors.kPrimary, width: 1.5),
+          ),
           errorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: const BorderSide(color: AppColors.kRed, width: 1.5)),
+            borderRadius: BorderRadius.circular(10),
+            borderSide: const BorderSide(color: AppColors.kRed, width: 1.5),
+          ),
           focusedErrorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: const BorderSide(color: AppColors.kRed, width: 1.5)),
+            borderRadius: BorderRadius.circular(10),
+            borderSide: const BorderSide(color: AppColors.kRed, width: 1.5),
+          ),
           prefixIcon: widget.isPrefixIconEnabled!
               ? Icon(
                   widget.icon,
                   color: AppColors.kPrimary,
                 )
               : null,
-
           suffixIcon: IconButton(
-            //focusColor: Colors.red,
             onPressed: _toggle,
             icon: Icon(
               _obscureText ? Icons.visibility : Icons.visibility_off,

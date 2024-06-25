@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:future_green_world/main.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ThemeController extends GetxController {
   static ThemeController instance = Get.find();
 
   bool isDarkMode = false;
+  SharedPreferences? sharedPreferences;
 
   @override
   void onInit() {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:future_green_world/res/colors/app_colors.dart';
+import 'package:future_green_world/res/fonts/app_fonts.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomElevatedButton extends StatelessWidget {

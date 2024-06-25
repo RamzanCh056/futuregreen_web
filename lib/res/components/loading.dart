@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:future_green_world/res/controllers/theme_controller.dart';
 import 'package:get/get.dart';
 
 import '../colors/app_colors.dart';
-import '../controller/controller_instances.dart';
 
 class Loading extends StatelessWidget {
   const Loading({super.key, this.color, this.size, this.text, this.textColor});
@@ -13,6 +13,9 @@ class Loading extends StatelessWidget {
   final Color? textColor;
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController =
+        Get.find<ThemeController>(); // Reference to ThemeController
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [

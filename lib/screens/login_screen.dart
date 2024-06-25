@@ -1,23 +1,17 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:future_green_world/res/assets/image_assets.dart';
+import 'package:future_green_world/res/authentication_view_model_controller.dart';
 import 'package:future_green_world/res/colors/app_colors.dart';
 import 'package:future_green_world/res/components/custom_elevated_button.dart';
 import 'package:future_green_world/res/components/custom_safe_area.dart';
 import 'package:future_green_world/res/components/custom_text_field.dart';
 import 'package:future_green_world/res/components/extensions.dart';
 import 'package:future_green_world/res/fonts/app_fonts.dart';
-import 'package:future_green_world/view/authentication/sign_up_screen.dart';
-import 'package:future_green_world/view/bottomNavBar/bottom_nav_bar_screen.dart';
-import 'package:future_green_world/view_model/controller/authentication/authentication_view_model_controller.dart';
+import 'package:future_green_world/screens/sign_up_screen.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:the_validator/the_validator.dart';
-
-import '../../res/components/custom_snackbar.dart';
-import '../../res/components/loading.dart';
-import '../../res/controller/controller_instances.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -27,12 +21,12 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final formKey = GlobalKey<FormState>();
-  @override
-  void initState() {
-    FlutterNativeSplash.remove();
-    super.initState();
-  }
+  // final formKey = GlobalKey<FormState>();
+  // @override
+  // void initState() {
+  //   FlutterNativeSplash.remove();
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -43,13 +37,13 @@ class _LoginScreenState extends State<LoginScreen> {
     }
     return CustomSafeArea(
         child: Scaffold(
-      backgroundColor: themeController.isDarkMode
-          ? DarkModeColors.kBodyColor
-          : AppColors.kWhite,
+      // backgroundColor: themeController.isDarkMode
+      //     ? DarkModeColors.kBodyColor
+      //     : AppColors.kWhite,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Form(
-          key: formKey,
+          //key: formKey,
           child: ListView(
             physics: const BouncingScrollPhysics(),
             children: [
@@ -142,23 +136,23 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: CustomElevatedButton(
                   title: 'Login',
                   onPress: () {
-                    if (formKey.currentState!.validate()) {
-                      loadingDialog("Signing In...");
-                      authController
-                          .login(authVMController.emailController.value.text,
-                              authVMController.passwordController.value.text)
-                          .then((value) {
-                        if (value != null) {
-                          Get.back();
-                          showErrorSnackbar(
-                            value,
-                            context,
-                          );
-                        } else {
-                          Get.offAll(() => const BottomNavigationBarScreen());
-                        }
-                      });
-                    }
+                    // if (formKey.currentState!.validate()) {
+                    //   loadingDialog("Signing In...");
+                    //   authController
+                    //       .login(authVMController.emailController.value.text,
+                    //           authVMController.passwordController.value.text)
+                    //       .then((value) {
+                    //     if (value != null) {
+                    //       Get.back();
+                    //       showErrorSnackbar(
+                    //         value,
+                    //         context,
+                    //       );
+                    //     } else {
+                    //       // Get.offAll(() => const BottomNavigationBarScreen());
+                    //     }
+                    //   });
+                    // }
                   },
                   width: Get.width * 0.9,
                 ),
@@ -171,12 +165,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   Text(
                     'Don\'t have an account?',
-                    style: GoogleFonts.playfairDisplay(
-                        color: themeController.isDarkMode
-                            ? AppColors.kLightGrey
-                            : AppColors.kGrey,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500),
+                    // style: GoogleFonts.playfairDisplay(
+                    //     color: themeController.isDarkMode
+                    //         ? AppColors.kLightGrey
+                    //         : AppColors.kGrey,
+                    //     fontSize: 14,
+                    //     fontWeight: FontWeight.w500),
                   ),
                   5.widthBox,
                   GestureDetector(

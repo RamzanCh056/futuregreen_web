@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:future_green_world/res/colors/app_colors.dart';
-
-import '../controller/controller_instances.dart';
+import 'package:future_green_world/res/controllers/theme_controller.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import '../fonts/app_fonts.dart';
 
 Future showCustomPopUp(
@@ -17,6 +18,9 @@ Future showCustomPopUp(
     context: context,
     barrierDismissible: false,
     builder: (BuildContext context) {
+      final ThemeController themeController =
+          Get.find<ThemeController>(); // Reference to ThemeController
+
       return AlertDialog(
         backgroundColor: themeController.isDarkMode
             ? DarkModeColors.kAppBarColor

@@ -1,5 +1,3 @@
-
-
 import 'package:google_fonts/google_fonts.dart';
 
 class AppFonts {
@@ -10,5 +8,4 @@ class AppFonts {
   static const String pacifico = 'Pacifico_Regular';
 
   static const String inter = 'Inter';
-
 }
