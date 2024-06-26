@@ -4,6 +4,7 @@ import 'package:future_green_world/res/authentication_view_model_controller.dart
 import 'package:future_green_world/res/colors/app_colors.dart';
 import 'package:future_green_world/res/components/web_custom_elevated_button.dart';
 import 'package:future_green_world/res/components/web_custom_text_field.dart';
+import 'package:future_green_world/res/components/web_scaffold.dart';
 import 'package:future_green_world/res/fonts/app_fonts.dart';
 import 'package:future_green_world/screens/sign_up_screen.dart';
 import 'package:get/get.dart';
@@ -29,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
       // authVMController.emailController.value.text = "test@gmail.com";
       // authVMController.passwordController.value.text = "12345678";
     }
-    return Scaffold(
+    return WebScaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Form(
@@ -42,20 +43,19 @@ class _LoginScreenState extends State<LoginScreen> {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: AppColors.kBlack,
-                  fontSize: 18,
-                  fontFamily: AppFonts.inter,
-                  fontWeight: FontWeight.w700,
+                  fontSize: 25,
+                  fontFamily: AppFonts.poppinsMedium,
+                  fontWeight: FontWeight.w900,
                 ),
               ),
               const Text(
                 'Enter to continue and explore within your grasp',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: AppColors.kBlack,
-                  fontSize: 18,
-                  fontFamily: AppFonts.inter,
-                  fontWeight: FontWeight.w700,
-                ),
+                    color: AppColors.kGrey,
+                    fontSize: 15,
+                    fontFamily: AppFonts.inter,
+                    fontWeight: FontWeight.w300),
               ),
               SizedBox(height: Get.height * 0.03),
               WebCustomTextField(
@@ -80,8 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 savedValue: (_) {},
                 obscure: true,
               ),
-              SizedBox(height: Get.height * 0.02),
-              SizedBox(height: Get.height * 0.2),
+              SizedBox(height: Get.height * 0.1),
               Center(
                 child: WebCustomElevatedButton(
                   title: 'Login',
