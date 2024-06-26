@@ -29,7 +29,7 @@ class _SelectTopicState extends State<SelectTopic> {
     return WebScaffold(
       body: SafeArea(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // const SizedBox(height: 80),
             Container(
@@ -54,10 +54,10 @@ class _SelectTopicState extends State<SelectTopic> {
                 ),
               ),
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 18),
             Column(
-              // mainAxisAlignment: MainAxisAlignment.center,
-              // mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
               children: [
                 ...List.generate(exams.length, (index) {
                   return GestureDetector(
@@ -72,17 +72,17 @@ class _SelectTopicState extends State<SelectTopic> {
                     },
                     child: Container(
                       margin:
-                          const EdgeInsets.only(left: 15, right: 15, top: 15),
+                          const EdgeInsets.only(left: 15, right: 15, top: 8),
                       decoration: BoxDecoration(
                         color: selectedExamIndex == index
                             ? AppColors.greenColor.withOpacity(0.2)
                             : null,
                         border: Border.all(
                             color: AppColors.greyColor.withOpacity(0.2)),
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.circular(12),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(15),
+                        padding: const EdgeInsets.all(8),
                         child: Row(
                           children: [
                             Image.asset(
@@ -113,9 +113,7 @@ class _SelectTopicState extends State<SelectTopic> {
                     ),
                   );
                 }),
-                const SizedBox(
-                  height: 8,
-                ),
+                SizedBox(height: Get.height * 0.08),
                 GestureDetector(
                   onTap: () {
                     if (selectedExamIndex != null) {
@@ -127,7 +125,7 @@ class _SelectTopicState extends State<SelectTopic> {
                   child: WebCustomElevatedButton(
                     title: 'Continue',
                     onPress: () => LoginScreen(),
-                    width: Get.width * 0.9,
+                    width: Get.width * 0.6,
                   ),
                 ),
               ],

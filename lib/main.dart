@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:future_green_world/view/home/select_topic.dart';
+import 'package:future_green_world/screens/login_screen.dart';
 import 'package:get/get.dart';
 import 'package:future_green_world/res/controllers/theme_controller.dart';
 
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
           title: 'Future Green World',
           theme:
               themeController.isDarkMode ? ThemeData.dark() : ThemeData.light(),
-          home: const SelectTopic(),
+          home: const LoginScreen(),
         );
       },
     );

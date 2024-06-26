@@ -5,14 +5,14 @@ import 'package:google_fonts/google_fonts.dart';
 class WebCustomElevatedButton extends StatelessWidget {
   const WebCustomElevatedButton(
       {super.key,
-      this.height = 60,
-      this.width = 64,
+      this.height = 38,
+      this.width = 60,
       this.buttonColor = AppColors.kPrimary,
       this.textColor = AppColors.kWhite,
       required this.title,
       this.loading = false,
       required this.onPress,
-      this.borderRadius = 15});
+      this.borderRadius = 8});
   final bool? loading;
   final String? title;
   final double? height, width;

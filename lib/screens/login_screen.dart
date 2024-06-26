@@ -7,6 +7,7 @@ import 'package:future_green_world/res/components/web_custom_text_field.dart';
 import 'package:future_green_world/res/components/web_scaffold.dart';
 import 'package:future_green_world/res/fonts/app_fonts.dart';
 import 'package:future_green_world/screens/sign_up_screen.dart';
+import 'package:future_green_world/view/home/select_topic.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:the_validator/the_validator.dart';
@@ -85,12 +86,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: WebCustomElevatedButton(
                   title: 'Login',
                   onPress: () {
-                    if (formKey.currentState!.validate()) {
+                    Get.to(() => const SelectTopic());
+                    // if (formKey.currentState!.validate()) {
+                      
                       // Perform login action
                       // authController.login(authVMController.emailController.value.text, authVMController.passwordController.value.text);
-                    }
+                    // }
                   },
-                  width: Get.width * 0.9,
+                  width: Get.width * 0.6,
                 ),
               ),
               SizedBox(height: Get.height * 0.02),

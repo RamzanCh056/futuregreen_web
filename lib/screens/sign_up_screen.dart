@@ -94,7 +94,7 @@ class SignUpScreen extends StatelessWidget {
               child: WebCustomElevatedButton(
             title: 'Create Account',
             onPress: () {
-              // if (formKey.currentState!.validate()) {
+              if (formKey.currentState!.validate()) {
               //   loadingDialog("Signing Up...");
               //   authController
               //       .register(
@@ -117,7 +117,7 @@ class SignUpScreen extends StatelessWidget {
               //       Get.offAll(() => const BottomNavigationBarScreen());
               //     }
               //   });
-              // }
+              }
             },
             width: Get.width * 0.9,
           )),
