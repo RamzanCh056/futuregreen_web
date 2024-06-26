@@ -119,13 +119,15 @@ class SignUpScreen extends StatelessWidget {
               //   });
               }
             },
-            width: Get.width * 0.9,
+            width: Get.width * 0.6,
+            height:60,
+
           )),
           SizedBox(
             height: Get.height * 0.02,
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text(
                 'Already have an account?',

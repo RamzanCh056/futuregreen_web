@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:future_green_world/res/colors/app_colors.dart';
+import 'package:future_green_world/res/components/exam_tile.dart';
+import 'package:future_green_world/res/components/level_tile.dart';
 import 'package:future_green_world/res/components/web_custom_elevated_button.dart';
 import 'package:future_green_world/res/components/web_scaffold.dart';
-import 'package:future_green_world/screens/login_screen.dart';
+import 'package:future_green_world/view/exam/exam_model.dart';
+import 'package:future_green_world/view/exam/exams.dart';
 import 'package:get/get.dart';
 
 class SelectTopic extends StatefulWidget {
@@ -14,6 +17,7 @@ class SelectTopic extends StatefulWidget {
 
 class _SelectTopicState extends State<SelectTopic> {
   int? selectedExamIndex;
+  bool showLevels = false;
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +33,9 @@ class _SelectTopicState extends State<SelectTopic> {
     return WebScaffold(
       body: SafeArea(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            // const SizedBox(height: 80),
             Container(
-              // padding: const EdgeInsets.symmetric(horizontal: 35),
               child: const Text(
                 "Select Topic Study",
                 style: TextStyle(
@@ -43,7 +45,6 @@ class _SelectTopicState extends State<SelectTopic> {
               ),
             ),
             Container(
-              // padding: const EdgeInsets.symmetric(horizontal: 30),
               child: const Text(
                 "Please select your topic study that you want to learn.",
                 textAlign: TextAlign.center,
@@ -59,75 +60,57 @@ class _SelectTopicState extends State<SelectTopic> {
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
-                ...List.generate(exams.length, (index) {
-                  return GestureDetector(
+                if (!showLevels)
+                  ...List.generate(exams.length, (index) {
+                    return ExamTile(
+                      exam: exams[index],
+                      isSelected: selectedExamIndex == index,
+                      onTap: () {
+                        setState(() {
+                          selectedExamIndex = index;
+                        });
+                      },
+                    );
+                  }),
+                if (showLevels && selectedExamIndex != null)
+                  Column(
+                    children: [
+                      LevelTile(
+                        exam: exams[selectedExamIndex!],
+                        level: "Level 1",
+                        isSelected: false,
+                        onTap: () {
+                          navigateToExamScreen(exams[selectedExamIndex!], 1);
+                        },
+                      ),
+                      LevelTile(
+                        exam: exams[selectedExamIndex!],
+                        level: "Level 2",
+                        isSelected: false,
+                        onTap: () {
+                          navigateToExamScreen(exams[selectedExamIndex!], 2);
+                        },
+                      ),
+                    ],
+                  ),
+                const SizedBox(height: 18),
+                if (selectedExamIndex != null && !showLevels)
+                  GestureDetector(
                     onTap: () {
                       setState(() {
-                        if (selectedExamIndex == index) {
-                          selectedExamIndex = null;
-                        } else {
-                          selectedExamIndex = index;
-                        }
+                        showLevels = true;
                       });
                     },
-                    child: Container(
-                      margin:
-                          const EdgeInsets.only(left: 15, right: 15, top: 8),
-                      decoration: BoxDecoration(
-                        color: selectedExamIndex == index
-                            ? AppColors.greenColor.withOpacity(0.2)
-                            : null,
-                        border: Border.all(
-                            color: AppColors.greyColor.withOpacity(0.2)),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: Row(
-                          children: [
-                            Image.asset(
-                              exams[index].iconPath,
-                              height: 40,
-                              width: 40,
-                            ),
-                            const SizedBox(width: 5),
-                            Text(
-                              exams[index].name,
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                            const Spacer(),
-                            selectedExamIndex == index
-                                ? Image.asset(
-                                    'assets/icons/selected.png',
-                                    height: 20,
-                                    width: 20,
-                                  )
-                                : const SizedBox(),
-                          ],
-                        ),
-                      ),
+                    child: WebCustomElevatedButton(
+                      title: 'Continue',
+                      onPress: () {
+                        setState(() {
+                          showLevels = true;
+                        });
+                      },
+                      width: Get.width * 0.6,
                     ),
-                  );
-                }),
-                SizedBox(height: Get.height * 0.08),
-                GestureDetector(
-                  onTap: () {
-                    if (selectedExamIndex != null) {
-                      Get.to(() => ExamsScreen(
-                            examData: exams[selectedExamIndex!],
-                          ));
-                    }
-                  },
-                  child: WebCustomElevatedButton(
-                    title: 'Continue',
-                    onPress: () => LoginScreen(),
-                    width: Get.width * 0.6,
                   ),
-                ),
               ],
             ),
           ],
@@ -135,31 +118,12 @@ class _SelectTopicState extends State<SelectTopic> {
       ),
     );
   }
-}
 
-// Mock ExamModel for demonstration purposes
-class ExamModel {
-  final String name;
-  final String iconPath;
-
-  ExamModel({required this.name, required this.iconPath});
-}
-
-// Mock ExamsScreen for demonstration purposes
-class ExamsScreen extends StatelessWidget {
-  final ExamModel examData;
-
-  const ExamsScreen({required this.examData, super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(examData.name),
-      ),
-      body: Center(
-        child: Text('Welcome to the ${examData.name} exam screen!'),
-      ),
-    );
+  void navigateToExamScreen(ExamModel exam, int level) {
+    Get.to(() => ExamsScreen(
+          examData: exam,
+          level: level,
+        ));
   }
 }
+

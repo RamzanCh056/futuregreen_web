@@ -84,6 +84,8 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(height: Get.height * 0.1),
               Center(
                 child: WebCustomElevatedButton(
+                  height:60,
+                  width: Get.width * 0.6,
                   title: 'Login',
                   onPress: () {
                     Get.to(() => const SelectTopic());
@@ -93,12 +95,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       // authController.login(authVMController.emailController.value.text, authVMController.passwordController.value.text);
                     // }
                   },
-                  width: Get.width * 0.6,
                 ),
               ),
               SizedBox(height: Get.height * 0.02),
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
                     "Don't have an account?",
