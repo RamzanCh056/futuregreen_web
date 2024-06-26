@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:future_green_world/res/colors/app_colors.dart';
-import 'package:future_green_world/res/components/custom_elevated_button.dart';
+import 'package:future_green_world/res/components/web_custom_elevated_button.dart';
 import 'package:future_green_world/res/fonts/app_fonts.dart';
 import 'package:get/get.dart';
 
-class CustomDialog extends StatelessWidget {
-  const CustomDialog({
+class WebCustomDialog extends StatelessWidget {
+  const WebCustomDialog({
     super.key,
     required this.text,
     required this.firstButtonText,
@@ -46,7 +46,7 @@ class CustomDialog extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      CustomElevatedButton(
+                      WebCustomElevatedButton(
                         title: firstButtonText,
                         width: Get.width * 0.3,
                         height: 40,
@@ -57,7 +57,7 @@ class CustomDialog extends StatelessWidget {
                       SizedBox(
                         width: Get.width * 0.1,
                       ),
-                      CustomElevatedButton(
+                      WebCustomElevatedButton(
                         title: secondButtonText,
                         width: Get.width * 0.3,
                         height: 40,

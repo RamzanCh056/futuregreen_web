@@ -6,9 +6,9 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class CustomTextField extends StatelessWidget {
-  const CustomTextField(
-      {Key? key,
+class WebCustomTextField extends StatelessWidget {
+  const WebCustomTextField(
+      {super.key,
       required this.controller,
       required this.hintText,
       this.labelText,
@@ -21,8 +21,7 @@ class CustomTextField extends StatelessWidget {
       this.isPrefixIconEnabled = false,
       this.obscure = false,
       this.icon = Icons.abc,
-      this.floatingLabelBehaviour = true})
-      : super(key: key);
+      this.floatingLabelBehaviour = true});
   final TextEditingController? controller;
   final bool? readOnly;
   final String? hintText;

@@ -9,21 +9,17 @@ class ThemeController extends GetxController {
   SharedPreferences? sharedPreferences;
 
   @override
-  void onInit() {
-    isDarkMode = sharedPreferences!.getBool("isDarkMode") ?? false;
-    Get.forceAppUpdate();
+  void onInit() async {
     super.onInit();
+    sharedPreferences = await SharedPreferences.getInstance();
+    isDarkMode = sharedPreferences?.getBool("isDarkMode") ?? false;
+    Get.changeTheme(isDarkMode ? ThemeData.dark() : ThemeData.light());
   }
 
   void toggleDarkMode() {
     isDarkMode = !isDarkMode;
-    if (isDarkMode) {
-      sharedPreferences!.setBool("isDarkMode", true);
-      Get.forceAppUpdate();
-    } else {
-      Get.changeTheme(ThemeData.light());
-      sharedPreferences!.setBool("isDarkMode", false);
-    }
-    Get.forceAppUpdate();
+    sharedPreferences?.setBool("isDarkMode", isDarkMode);
+    Get.changeTheme(isDarkMode ? ThemeData.dark() : ThemeData.light());
+    update();
   }
 }

@@ -7,9 +7,23 @@ class AuthenticationViewModel extends GetxController {
   final passwordController = TextEditingController().obs;
   final newPasswordController = TextEditingController().obs;
   final confirmPasswordController = TextEditingController().obs;
+
   void clearController() {
     nameController.value.clear();
     emailController.value.clear();
     passwordController.value.clear();
+    newPasswordController.value.clear();
+    confirmPasswordController.value.clear();
+  }
+
+  @override
+  void onClose() {
+    // Dispose of the controllers when the view model is closed
+    nameController.value.dispose();
+    emailController.value.dispose();
+    passwordController.value.dispose();
+    newPasswordController.value.dispose();
+    confirmPasswordController.value.dispose();
+    super.onClose();
   }
 }
