@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:future_green_world/view/home/select_topic.dart';
 import 'package:get/get.dart';
 import 'package:future_green_world/res/controllers/theme_controller.dart';
-import 'package:future_green_world/screens/login_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,9 +17,11 @@ class MyApp extends StatelessWidget {
     return GetBuilder<ThemeController>(
       builder: (themeController) {
         return GetMaterialApp(
+          debugShowCheckedModeBanner: false,
           title: 'Future Green World',
-          theme: themeController.isDarkMode ? ThemeData.dark() : ThemeData.light(),
-          home: const LoginScreen(),
+          theme:
+              themeController.isDarkMode ? ThemeData.dark() : ThemeData.light(),
+          home: const SelectTopic(),
         );
       },
     );
