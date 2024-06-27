@@ -28,7 +28,6 @@ class _WebScaffoldState extends State<WebScaffold> {
     double horizontalPadding = screenWidth * 0.15;
     double verticalPadding = screenheight * 0.04;
 
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.kWhite,
@@ -43,7 +42,10 @@ class _WebScaffoldState extends State<WebScaffold> {
           if (!isAppDrawerClosed) const AppDrawer(),
           Expanded(
             child: Padding(
-              padding: EdgeInsets.only(left: horizontalPadding, right: horizontalPadding, top: verticalPadding),
+              padding: EdgeInsets.only(
+                  left: horizontalPadding,
+                  right: horizontalPadding,
+                  top: verticalPadding),
               child: widget.body,
             ),
           ),

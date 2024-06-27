@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:future_green_world/res/colors/app_colors.dart';
-import 'package:future_green_world/res/components/exam_tile.dart';
-import 'package:future_green_world/res/components/level_tile.dart';
+import 'package:future_green_world/view/exam/exam_tile.dart';
+import 'package:future_green_world/view/exam/level_tile.dart';
 import 'package:future_green_world/res/components/web_custom_elevated_button.dart';
 import 'package:future_green_world/res/components/web_scaffold.dart';
 import 'package:future_green_world/view/exam/exam_model.dart';
@@ -123,4 +123,3 @@ class _SelectTopicState extends State<SelectTopic> {
     Get.to(() => const StudyMode());
   }
 }
-

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:future_green_world/res/colors/app_colors.dart';
 import 'package:future_green_world/res/components/web_scaffold.dart';
-import 'package:future_green_world/view/home/select_topic.dart';
+import 'package:future_green_world/view/exam/exam_model.dart';
+import 'package:future_green_world/view/exam/exam_screen.dart';
+import 'package:future_green_world/view/home/study%20mode/celender_customize.dart';
 
 class StudyMode extends StatelessWidget {
   const StudyMode({super.key});
@@ -47,10 +49,17 @@ class StudyMode extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
+                // Navigate to ExamsScreen when Manual Study is tapped
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const SelectTopic()));
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ExamsScreen(
+                      exam: ExamModel(
+                          name: '',
+                          iconPath: ''), // Pass your exam model here if needed
+                    ),
+                  ),
+                );
               },
               child: Column(
                 children: [
@@ -104,8 +113,10 @@ class StudyMode extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                // Navigator.push(context,
-                //     MaterialPageRoute(builder: (context) => const CustomCalendar()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const CustomCalendar()));
               },
               child: Center(
                 child: Container(
